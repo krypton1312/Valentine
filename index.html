@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            color: white;
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 90%;
+        }
+        h1 {
+            font-size: 2em;
+            opacity: 0;
+            animation: fadeIn 2s forwards, glow 2s infinite alternate;
+        }
+        .photos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            animation: fadeIn 3s forwards, bounce 2s infinite;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background: red;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+        }
+        .button:hover {
+            background: darkred;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px white; }
+            to { text-shadow: 0 0 15px white; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 80%, 15% 100%, 0% 35%);
+            animation: floatUp 5s infinite ease-in-out;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(1); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+        .heart-large {
+            width: 30px;
+            height: 30px;
+            background: pink;
+            position: absolute;
+            clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 80%, 15% 100%, 0% 35%);
+            animation: floatUp 6s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>С Днем Святого Валентина, моя любовь! ❤️</h1>
+        <p id="message" style="color: white; font-size: 1.5em; margin-top: 10px;">Ты самое прекрасное, что есть в моей жизни. Спасибо, что ты рядом! 💕</p>
+        <div class="photos">
+            <div class="photo" style="background-image: url('photo_1_2025-02-14_15-27-49.jpg');"></div>
+            <div class="photo" style="background-image: url('photo_2_2025-02-14_15-27-49.jpg');"></div>
+            <div class="photo" style="background-image: url('photo_3_2025-02-14_15-27-49.jpg');"></div>
+        </div>
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = Math.random() > 0.5 ? 'heart' : 'heart-large';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
